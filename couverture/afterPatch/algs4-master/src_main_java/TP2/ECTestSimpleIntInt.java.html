@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>ECTestSimpleIntInt.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">TP2 (10 oct. 2018 14:10:31)</a> &gt; <a href="../../index.html" class="el_group">algs4-master</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">TP2</a> &gt; <span class="el_source">ECTestSimpleIntInt.java</span></div><h1>ECTestSimpleIntInt.java</h1><pre class="source lang-java linenums">package TP2;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import edu.princeton.cs.algs4.Graph;
+import edu.princeton.cs.algs4.GraphGenerator;
+
+<span class="fc" id="L14">class ECTestSimpleIntInt {</span>
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+<span class="fc" id="L18">	}</span>
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+<span class="fc" id="L22">	}</span>
+
+	@BeforeEach
+	void setUp() throws Exception {
+<span class="fc" id="L26">	}</span>
+
+	@AfterEach
+	void tearDown() throws Exception {
+<span class="fc" id="L30">	}</span>
+
+	/**
+	 * &lt;{0, -1}, {Exception}&gt;. This throws an exception so we wrap it inside the assertThrows to prevent a crash.
+	 */
+	@Test
+	void testMinMinus() {
+<span class="pc" id="L37">		assertThrows(Exception.class, () -&gt; {GraphGenerator.simple(0, -1);});</span>
+<span class="fc" id="L38">	}</span>
+	
+	/**
+	 * &lt;{1, 0}, {Graph}&gt;. On s'attend a recevoir un graphe avec le bon nombre de vertices et edges.
+	 */
+	@Test
+	void testMin() {
+<span class="fc" id="L45">		Graph graph = GraphGenerator.simple(1, 0);</span>
+<span class="fc" id="L46">		assertEquals(1, graph.V());</span>
+<span class="fc" id="L47">		assertEquals(0, graph.E());</span>
+<span class="fc" id="L48">	}</span>
+	
+	/**
+	 * &lt;{2, 1}, {Graph}&gt;. On s'attend a recevoir un graphe avec le bon nombre de vertices et edges.
+	 */
+	@Test
+	void testMinPlus() {
+<span class="fc" id="L55">		Graph graph = GraphGenerator.simple(2, 1);</span>
+<span class="fc" id="L56">		assertEquals(2, graph.V());</span>
+<span class="fc" id="L57">		assertEquals(1, graph.E());</span>
+<span class="fc" id="L58">	}</span>
+	
+	/**
+	 * &lt;{5, 6}, {Graph}&gt;. On s'attend a recevoir un graphe avec le bon nombre de vertices et edges.
+	 */
+	@Test
+	void testNominal() {
+<span class="fc" id="L65">		Graph graph = GraphGenerator.simple(5, 6);</span>
+<span class="fc" id="L66">		assertEquals(5, graph.V());</span>
+<span class="fc" id="L67">		assertEquals(6, graph.E());</span>
+<span class="fc" id="L68">	}</span>
+	
+	/**
+	 * &lt;{Max - 1,  Max - 1}, {Graph}&gt;. On s'attend a recevoir un graphe avec le bon nombre de vertices et edges.
+	 */
+	@Test
+	void testMaxMinus() {
+		try {
+<span class="nc" id="L76">			GraphGenerator.simple(Integer.MAX_VALUE - 1, Integer.MAX_VALUE - 1);</span>
+<span class="pc" id="L77">		} catch (Error e) {</span>
+<span class="nc" id="L78">			fail(&quot;This method should not throw an error.&quot;);</span>
+		}
+<span class="nc" id="L80">	}</span>
+	
+	/**
+	 * &lt;{Max,  Max}, {Graph}&gt;. On s'attend a recevoir un graphe avec le bon nombre de vertices et edges.
+	 */
+	@Test
+	void testMax() {
+		try {
+<span class="nc" id="L88">			GraphGenerator.simple(Integer.MAX_VALUE, Integer.MAX_VALUE);</span>
+<span class="pc" id="L89">		} catch (Error e) {</span>
+<span class="nc" id="L90">			fail(&quot;This method should not throw an error.&quot;);</span>
+		}
+<span class="nc" id="L92">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>TP2 (10 oct. 2018 14:10:31)</div></body></html>
