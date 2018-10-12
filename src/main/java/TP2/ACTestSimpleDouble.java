@@ -17,7 +17,7 @@ import edu.princeton.cs.algs4.Graph;
 import edu.princeton.cs.algs4.GraphGenerator;
 
 
-class ACTestSimpleInt {
+class ACTestSimpleDouble {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -37,80 +37,94 @@ class ACTestSimpleInt {
 	
 	@Test
 	void testMinMinusWithMinMinus() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  -1);});
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  -0.1);});
 	}
 	
 	@Test
 	void testMinMinusWithMin() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  0);});
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  0.0);});
 	}
 	
 	@Test
 	void testMinMinusWithNominal() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  7);});
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  0.5);});
 	}
 	
 	@Test
 	void testMinMinusWithMax() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  Integer.MAX_VALUE);});
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  1.0);});
+	}
+	
+	@Test
+	void testMinMinusWithMaxPlus() {
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(-1,  1.1);});
 	}
 	
 	@Test
 	void testMinWithMinMinus() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(0,  -1);});
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(0,  -0.1);});
 	}
 	
 	@Test
 	void testMinWithMin() {
-		Graph g = GraphGenerator.simple(0,  0);
-		assertEquals(0, g.E());
+		Graph g = GraphGenerator.simple(0,  0.0);
 		assertEquals(0, g.V());
 	}
 	
 	@Test
 	void testMinWithNominal() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(0, 7);});
+		Graph g = GraphGenerator.simple(0, 0.5);
+		assertEquals(0, g.V());
 	}
 	
 	@Test
 	void testMinWithMax() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(0,  Integer.MAX_VALUE);});
+		Graph g = GraphGenerator.simple(0,  1.0);
+		assertEquals(0, g.V());
+	}
+	
+	@Test
+	void testMinWithMaxPlus() {
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(0,  1.1);});
 	}
 	
 	@Test
 	void testNominalWithMinMinus() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(7,  -1);});
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(7,  -0.1);});
 	}
 	
 	@Test
 	void testNominalWithMin() {
-		Graph g = GraphGenerator.simple(7,  0);
-		assertEquals(0, g.E());
+		Graph g = GraphGenerator.simple(7,  0.0);
 		assertEquals(7, g.V());
 	}
 	
 	@Test
 	void testNominalWithNominal() {
-		Graph g = GraphGenerator.simple(7, 7);
-		assertEquals(7, g.E());
+		Graph g = GraphGenerator.simple(7, 0.5);
 		assertEquals(7, g.V());
 	}
 	
 	@Test
 	void testNominalWithMax() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(7,  Integer.MAX_VALUE);});
+		Graph g = GraphGenerator.simple(7,  1.0);
+		assertEquals(7, g.V());
+	}
+	
+	@Test
+	void testNominalWithMaxPlus() {
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(7,  1.1);});
 	}
 	
 	@Test
 	void testMaxWithMinMinus() {
-		assertThrows(Exception.class, () -> {GraphGenerator.simple(Integer.MAX_VALUE,  -1);});
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(Integer.MAX_VALUE,  -0.1);});
 	}
 	
 	@Test
 	void testMaxWithMin() {
 		try {
-			Graph g = GraphGenerator.simple(Integer.MAX_VALUE,  0);
-			assertEquals(0, g.E());
+			Graph g = GraphGenerator.simple(Integer.MAX_VALUE,  0.0);
 			assertEquals(Integer.MAX_VALUE, g.V());
 		} catch (Error e) {
 			fail("This method should not throw an error.");
@@ -120,8 +134,7 @@ class ACTestSimpleInt {
 	@Test
 	void testMaxWithNominal() {
 		try {
-			Graph g = GraphGenerator.simple(Integer.MAX_VALUE, 7);
-			assertEquals(7, g.E());
+			Graph g = GraphGenerator.simple(Integer.MAX_VALUE, 0.5);
 			assertEquals(Integer.MAX_VALUE, g.V());
 		} catch (Error e) {
 			fail("This method should not throw an error.");
@@ -131,11 +144,15 @@ class ACTestSimpleInt {
 	@Test
 	void testMaxWithMax() {
 		try {
-			Graph g = GraphGenerator.simple(Integer.MAX_VALUE,  Integer.MAX_VALUE);
-			assertEquals(Integer.MAX_VALUE, g.E());
+			Graph g = GraphGenerator.simple(Integer.MAX_VALUE,  1.0);
 			assertEquals(Integer.MAX_VALUE, g.V());
 		} catch (Error e) {
 			fail("This method should not throw an error.");
 		}
+	}
+	
+	@Test
+	void testMaxWithMaxPlus() {
+		assertThrows(Exception.class, () -> {GraphGenerator.simple(Integer.MAX_VALUE,  1.1);});
 	}
 }
